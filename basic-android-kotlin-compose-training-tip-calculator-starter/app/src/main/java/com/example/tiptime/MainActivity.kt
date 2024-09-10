@@ -45,8 +45,13 @@ import java.text.NumberFormat
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
+/*
 var amountInput: MutableState<String> = mutableStateOf("0")
+ */
 
 
 class MainActivity : ComponentActivity() {
@@ -111,10 +116,10 @@ fun TipTimeLayoutPreview() {
 
 @Composable
 fun EditNumberField(modifier: Modifier = Modifier) {
-    var amountInput = mutableStateOf("0")
+    var amountInput by remember { mutableStateOf("") }
     TextField(
-        value = amountInput.value,
-        onValueChange = { amountInput.value = it },
+        value = amountInput,
+        onValueChange = { amountInput = it },
         modifier = modifier
     )
 }
